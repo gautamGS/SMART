@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>STG Hackathon</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/loader.js"></script>
+
+  <style>
+  .specialDiv{
+    border: 1px solid black !important;
+  }
+  </style>
+  <script>
+
+    $(document).ready(function () {
+
+      $('#btn1').click(function (e) {
+        // Your event handler
+        console.log("change")
+        console.log(e.target.selectedIndex)
+        x = $("select[id='items'] option:selected").index()
+        y = $("select[id='images'] option:selected").index()
+
+        if (x == 0 || y == 0) {
+          alert('Please select a value')
+        }
+        else {
+          $.ajax({
+            url: "http://localhost:5000/stg/items/" + x + "/" + y,
+            cache: false,
+            type: "GET",
+
+            success: function (html) {
+              console.log("suceess hitting")
+              console.log(html.item.address)
+              image_source_1 = html.item.address_1
+              image_source_2 = html.item.address_2
+              image_source_3 = html.item.bounding_box_img
+              $("#div1").html('<img src="' + image_source_1 + '" alt="Image 1" Height="250" Width="250">')
+              $("#div2").html('<img src="' + image_source_2 + '" alt="Image 2" Height="250" Width="250">')
+              $("#bounding_box_img").html('<b>Image with Detections: </b><br><img src="' + image_source_3 + '" alt="Bounding Box Image" >')
+              $("#current_product_affinity").html('<div style="vertical-align:top" > <h3> ' + html.item.current_product_affinity + '% </h3> </div>')
+              $("#heading1").html('<h3> Product Affinity Current:')
+
+              console.log(html.item.pie_chart_1)
+
+
+              google.charts.load('current', { 'packages': ['corechart'] });
+              google.charts.setOnLoadCallback(drawChart);
+              google.charts.setOnLoadCallback(drawChart_1);
+              google.charts.setOnLoadCallback(drawChart_2);
+
+              // Draw the chart and set the chart values
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable(html.item.pie_chart_1);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Item Vs Competitors', 'width': 350, 'height': 400 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_1'));
+                chart.draw(data, options);
+              }
+
+              function drawChart_1() {
+                var data = google.visualization.arrayToDataTable(html.item.pie_chart_2);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Brand Vs Competitors', 'width': 350, 'height': 400 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_2'));
+                chart.draw(data, options);
+              }
+
+              function drawChart_2() {
+                var data = google.visualization.arrayToDataTable(html.item.pie_chart_3);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Brand Coverage', 'width': 350, 'height': 400 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3'));
+                chart.draw(data, options);
+              }
+
+
+
+
+            },
+            error: function (error) {
+              console.log(error)
+            }
+          });
+        }
+
+      });
+
+      // And now fire change event when the DOM is ready
+      $('#countrylist').trigger('change');
+    });
+
+
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">STG Hackathon</a>
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">STG Hackathon, 2018: Use Case 1</h1>
+        <p class="lead"><b>Team Rabbit</b></p>
+        <!-- <ul class="list-unstyled"> -->
+        <!-- <li>Bootstrap 4.1.3</li> -->
+        <!-- <li>jQuery 3.3.1</li> -->
+        <!-- </ul> -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+
+
+        <select id="images">
+          <option class="dropdown-item" value="select" selected="selected">--Select an Image--</option>
+          <option value="item1">Image1</option>
+          <option value="item2">Image2</option>
+          <option value="item3">Image3</option>
+        </select>
+
+
+        <select id="items">
+          <option class="dropdown-item" value="select" selected="selected">--Select an Item--</option>
+          <option value="item1">Item1</option>
+          <option value="item2">Item2</option>
+          <option value="item3">Item3</option>
+        </select>
+
+        <button id="btn1">Submit</button>
+
+
+
+      </div>
+    </div>
+  
+  <br>
+  <br>
+  <br>
+
+
+  <div class="row specialDiv" >
+    <div class="col-lg-4 text-center">
+      <div id="piechart_1" class="special">
+
+      </div>
+    </div>
+
+    <div class="col-lg-4 text-center">
+      <div id="piechart_2" class="special">
+
+      </div>
+    </div>
+
+    <div class="col-lg-4 text-center">
+      <div id="piechart_3" class="special">
+
+      </div>
+    </div>
+
+  </div>
+<br>
+<br>
+
+<br>
+  <div class="row text-center center">
+    <div class="col-lg-offset-2 col-lg-12 text-center" id="bounding_box_img">
+
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div class="row" id="heading1">
+
+      </div>
+
+      <div class="row text-center">
+        
+         
+        <div class="col-lg-4 col-lg-offset-2" id="div1" align="right" style="background-color: cyan; border:1px solid white">
+        </div>
+        <div class="col-lg-2" id="current_product_affinity">
+
+        </div>
+        <div class="col-lg-4" id="div2" align="left" style="background-color: cyan; border:1px solid white">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
