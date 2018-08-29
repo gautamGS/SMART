@@ -1,262 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-<head>
+    <title>Gentelella Alela! | </title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-  <title>STG Hackathon</title>
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+  </head>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <body class="nav-sm">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Retail Store!</span></a>
+            </div>
+            <img src="SMART.png" style="width:80%;padding-left:10px;">
+            <div class="clearfix"></div>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="vendor/loader.js"></script>
+            <!-- menu profile quick info -->
+          
+            <!-- /menu profile quick info -->
 
-  <style>
-  .specialDiv{
-    border: 1px solid black !important;
-  }
-  </style>
-  <script>
+            <br />
 
-    $(document).ready(function () {
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" >
+                      <li style="display:none;"><a href="index.html">Summary</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
 
-      $('#btn1').click(function (e) {
-        // Your event handler
-        console.log("change")
-        console.log(e.target.selectedIndex)
-        x = $("select[id='items'] option:selected").index()
-        y = $("select[id='images'] option:selected").index()
+            </div>
+            <!-- /sidebar menu -->
 
-        if (x == 0 || y == 0) {
-          alert('Please select a value')
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel"  style="padding-bottom: 0px">
+                <div class="x_title" style="margin-bottom:0;">
+                  <h2>Select Product <small></small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i id="icon_id" class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content" id="top_panel_x">
+                  <br>
+                  <form class="form-horizontal form-label-left input_mask">
+                      <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                          <input type="file" class="form-control">
+                      </div>
+
+                      <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                          <select class="select2_group form-control">
+                              <option value="NA">Select Brand</option>
+                                <option value="AK">Parle</option>
+                                <option value="HI">Nestle</option>
+                              
+                            </select>
+                      </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                        <select class="select2_group form-control">
+                            <option value="NA">Select Item</option>
+                              <option value="AK">Biscuit</option>
+                              <option value="HI">Cookies</option>
+                            
+                          </select>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-1 ">
+                        <button class="btn btn-primary" type="reset">Reset</button>
+                        <button id="submit_form" type="button" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          <div class="row analysis">
+            <div class="col-md-8  col-xs-12">
+                <div class="row">
+              <div class="col-md-6 col-xs-12">
+                <div class="x_panel tile  overflow_hidden">
+                  <div class="x_title">
+                    <h2>Brand Coverage</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="" style="width:100%">
+                      <tr>
+                        <th style="width:37%;">
+                          <p>Top 5</p>
+                        </th>
+                        <th>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <p class="">Brand</p>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <p class="">Coverage</p>
+                          </div>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <canvas class="" id="brandCoverage" height="140" width="140" style="margin: 15px 10px 10px 0;height:140px;"></canvas>
+                        </td>
+                        <td>
+                          <table id="brandCoverage_table" class="tile_info">
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-xs-12">
+                <div class="x_panel tile  overflow_hidden">
+                  <div class="x_title">
+                    <h2>Brand vs Competitors</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="" style="width:100%">
+                      <tr>
+                        <th style="width:37%;">
+                          <p>Top 5</p>
+                        </th>
+                        <th>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <p class="">Brand</p>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <p class="">Coverage</p>
+                          </div>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <canvas class="" id="brandvscomp" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                        </td>
+                        <td>
+                          <table class="tile_info" id="brandvscomp_table">
+                            
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-xs-12">
+                <div class="x_panel tile  overflow_hidden">
+                  <div class="x_title">
+                    <h2>Item vs Competitors</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="" style="width:100%">
+                      <tr>
+                        <th style="width:37%;">
+                          <p>Top 5</p>
+                        </th>
+                        <th>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <p class="">Brand</p>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <p class="">Coverage</p>
+                          </div>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <canvas class="" id="brand3" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                        </td>
+                        <td>
+                          <table class="tile_info" id="brand3_table">
+                            
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-xs-12">
+                  <div class="x_panel tile  overflow_hidden">
+                    <div class="x_title">
+                      <h2>Affinity Matrix</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <table class="" style="width:100%">
+                        <tr>
+                          <th style="width:37%;">
+                            <p>Top 5</p>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>
+                            <canvas class="" id="affinity" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                          </td>
+                          <td>
+                              <table class="tile_info" id="affinity_table">
+                            
+                                </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="x_panel tile  overflow_hidden">
+                    <div class="x_title">
+                      <h2>Processed Image</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content save_4_training">
+                        <img class="img-responsive " style="height:500px; margin-left:25px;" src="images/hard_img.jpg">
+                        <button id="training_save" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="position: absolute; bottom: 0; left: 0;width:100%;display:none;">Save for Future</button>
+                    </div>
+                  </div>
+              
+            </div>
+          </div>
+
+
+          
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Data Saved</h4>
+                </div>
+                <div class="modal-body">
+                  <p>This image along with product data has been saved for future training.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.analysis').hide();
+        function mapFunction(value){ return value[0]; }
+        function mapFunction_2(value){ return value[1]; }
+        
+        function returnData(name = "chart1"){
+          request = [
+                        {
+                            'id': 1,
+                            'address_1': 'images/1.jpg',
+                                                    'address_2': 'images/2.jpg',
+                            'description': 'Milk, Cheese, Pizza, Fruit, Tylenol', 
+                            'done': false,
+                            'pie_chart_1' :[['Item',10], ['Apple',20], ['Orange',40],['Banana',10]],
+                            'pie_chart_2' :[['Brand',10], ['Samsung',3], ['Xiaomi',4]],
+                            'pie_chart_3' :[['Brand',10], ['Dell',3], ['HP',7]],
+                            'bounding_box_img' : 'images/3.jpg',
+                            'current_product_affinity' : 90
+                        },
+                        {
+                            'id': 2,
+                            'address_1': 'images/2.jpg',
+                                                    'address_2': 'images/1.jpg',
+                            'description': 'Cold Storage', 
+                            'done': false
+                        }
+                    ];
+          
+          arr = request[0][name];
+          labels = arr.map(mapFunction);
+          vals = arr.map(mapFunction_2);
+          return [labels,vals];
         }
-        else {
-          $.ajax({
-            url: "http://localhost:5000/stg/items/" + x + "/" + y,
-            cache: false,
-            type: "GET",
 
-            success: function (html) {
-              console.log("suceess hitting")
-              console.log(html.item.address)
-              image_source_1 = html.item.address_1
-              image_source_2 = html.item.address_2
-              image_source_3 = html.item.bounding_box_img
-              $("#div1").html('<img src="' + image_source_1 + '" alt="Image 1" Height="250" Width="250">')
-              $("#div2").html('<img src="' + image_source_2 + '" alt="Image 2" Height="250" Width="250">')
-              $("#bounding_box_img").html('<b>Image with Detections: </b><br><img src="' + image_source_3 + '" alt="Bounding Box Image" >')
-              $("#current_product_affinity").html('<div style="vertical-align:top" > <h3> ' + html.item.current_product_affinity + '% </h3> </div>')
-              $("#heading1").html('<h3> Product Affinity Current:')
+        function chart_generation(canvas_id, canvas_table_id, data, typeC="doughnut"){
+          color_pallete = ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 206, 86)','rgb(75, 192, 192)','rgb(153, 102, 255)','rgb(255, 159, 64)'];
 
-              console.log(html.item.pie_chart_1)
+          var ctx = document.getElementById(canvas_id).getContext("2d");
+          var myChart = new Chart(ctx, {
+              type: typeC,
+              data: {
+                  labels: data[0],
+                  datasets: [{
+                      label: '# of Votes',
+                      data: data[1],
+                      backgroundColor: color_pallete,
+                  }]
+              }, 
+              options:{
+                scales: {
+                  // yAxes: [{
+                  //   barPercentage: 0.20,
+                  //   barThickness:0.15
+                  // }]
+                }
 
-
-              google.charts.load('current', { 'packages': ['corechart'] });
-              google.charts.setOnLoadCallback(drawChart);
-              google.charts.setOnLoadCallback(drawChart_1);
-              google.charts.setOnLoadCallback(drawChart_2);
-
-              // Draw the chart and set the chart values
-              function drawChart() {
-                var data = google.visualization.arrayToDataTable(html.item.pie_chart_1);
-
-                // Optional; add a title and set the width and height of the chart
-                var options = { 'title': 'Item Vs Competitors', 'width': 350, 'height': 400 };
-
-                // Display the chart inside the <div> element with id="piechart"
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_1'));
-                chart.draw(data, options);
               }
-
-              function drawChart_1() {
-                var data = google.visualization.arrayToDataTable(html.item.pie_chart_2);
-
-                // Optional; add a title and set the width and height of the chart
-                var options = { 'title': 'Brand Vs Competitors', 'width': 350, 'height': 400 };
-
-                // Display the chart inside the <div> element with id="piechart"
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_2'));
-                chart.draw(data, options);
-              }
-
-              function drawChart_2() {
-                var data = google.visualization.arrayToDataTable(html.item.pie_chart_3);
-
-                // Optional; add a title and set the width and height of the chart
-                var options = { 'title': 'Brand Coverage', 'width': 350, 'height': 400 };
-
-                // Display the chart inside the <div> element with id="piechart"
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_3'));
-                chart.draw(data, options);
-              }
-
-
-
-
-            },
-            error: function (error) {
-              console.log(error)
-            }
           });
+          for(i = 0; i < data[0].length; i++){
+            content = '<tr><td><p><i class="fa fa-square" style="color:' + color_pallete[i] + '"></i>' + data[0][i] + '</p></td><td>'+ data[1][i] +'%</td></tr>';
+            $('#'+canvas_table_id).append(content);
+          }
         }
-
-      });
-
-      // And now fire change event when the DOM is ready
-      $('#countrylist').trigger('change');
-    });
-
-
-  </script>
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">STG Hackathon</a>
-
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="mt-5">STG Hackathon, 2018: Use Case 1</h1>
-        <p class="lead"><b>Team Rabbit</b></p>
-        <!-- <ul class="list-unstyled"> -->
-        <!-- <li>Bootstrap 4.1.3</li> -->
-        <!-- <li>jQuery 3.3.1</li> -->
-        <!-- </ul> -->
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-lg-12 text-center">
-
-
-        <select id="images">
-          <option class="dropdown-item" value="select" selected="selected">--Select an Image--</option>
-          <option value="item1">Image1</option>
-          <option value="item2">Image2</option>
-          <option value="item3">Image3</option>
-        </select>
-
-
-        <select id="items">
-          <option class="dropdown-item" value="select" selected="selected">--Select an Item--</option>
-          <option value="item1">Item1</option>
-          <option value="item2">Item2</option>
-          <option value="item3">Item3</option>
-        </select>
-
-        <button id="btn1">Submit</button>
-
-
-
-      </div>
-    </div>
-  
-  <br>
-  <br>
-  <br>
-
-
-  <div class="row specialDiv" >
-    <div class="col-lg-4 text-center">
-      <div id="piechart_1" class="special">
-
-      </div>
-    </div>
-
-    <div class="col-lg-4 text-center">
-      <div id="piechart_2" class="special">
-
-      </div>
-    </div>
-
-    <div class="col-lg-4 text-center">
-      <div id="piechart_3" class="special">
-
-      </div>
-    </div>
-
-  </div>
-<br>
-<br>
-
-<br>
-  <div class="row text-center center">
-    <div class="col-lg-offset-2 col-lg-12 text-center" id="bounding_box_img">
-
-
-    </div>
-  </div>
-
-  <br>
-  <br>
-
-
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <div class="row" id="heading1">
-
-      </div>
-
-      <div class="row text-center">
         
-         
-        <div class="col-lg-4 col-lg-offset-2" id="div1" align="right" style="background-color: cyan; border:1px solid white">
-        </div>
-        <div class="col-lg-2" id="current_product_affinity">
+        $('#submit_form').click(function(){
+          $('#top_panel_x').slideUp();
+          $("#icon_id").removeClass("fa-chevron-up");
+          $("#icon_id").addClass("fa-chevron-down");
+          $('.analysis').show();
+          data = returnData("pie_chart_1");
+          chart_generation("brandCoverage", "brandCoverage_table", data);
+          data = returnData("pie_chart_2");
+          chart_generation("brandvscomp", "brandvscomp_table", data);
+          data = returnData("pie_chart_3");
+          chart_generation("brand3", "brand3_table", data);
+          data = returnData("pie_chart_1");
+          chart_generation("affinity", "affinity_table", data);
+        });
 
-        </div>
-        <div class="col-lg-4" id="div2" align="left" style="background-color: cyan; border:1px solid white">
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  </div>
-
-
-
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
+        $('.save_4_training').mouseenter(function(){
+          $('#training_save').fadeIn();
+        });
+        $('.save_4_training').mouseleave(function(){
+          $('#training_save').fadeOut();
+        });
+      })
+    </script>
+  </body>
 </html>
