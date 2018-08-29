@@ -38,7 +38,7 @@
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Retail Store!</span></a>
             </div>
-
+            <img src="SMART.png" style="width:80%;padding-left:10px;">
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
@@ -112,11 +112,11 @@
                 <div class="x_content" id="top_panel_x">
                   <br>
                   <form class="form-horizontal form-label-left input_mask">
-                      <div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+                      <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
                           <input type="file" class="form-control">
                       </div>
 
-                      <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                      <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
                           <select class="select2_group form-control">
                               <option value="NA">Select Brand</option>
                                 <option value="AK">Parle</option>
@@ -124,7 +124,7 @@
                               
                             </select>
                       </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
                         <select class="select2_group form-control">
                             <option value="NA">Select Item</option>
                               <option value="AK">Biscuit</option>
@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="form-group">
-                      <div class="col-md-2 col-sm-12 col-xs-12 ">
+                      <div class="col-md-2 col-sm-12 col-xs-12 col-md-offset-1 ">
                         <button class="btn btn-primary" type="reset">Reset</button>
                         <button id="submit_form" type="button" class="btn btn-success">Submit</button>
                       </div>
@@ -147,7 +147,7 @@
             </div>
           </div>
           <div class="row analysis">
-            <div class="col-md-8">
+            <div class="col-md-8  col-xs-12">
                 <div class="row">
               <div class="col-md-6 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
@@ -178,40 +178,10 @@
                       </tr>
                       <tr>
                         <td>
-                          <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                          <canvas class="" id="brandCoverage" height="140" width="140" style="margin: 15px 10px 10px 0;height:140px;"></canvas>
                         </td>
                         <td>
-                          <table class="tile_info">
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square blue"></i>Parle </p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square green"></i>Nestle </p>
-                              </td>
-                              <td>10%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square purple"></i>Haldiram </p>
-                              </td>
-                              <td>20%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square aero"></i>Britania </p>
-                              </td>
-                              <td>15%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square red"></i>Tiger</p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
+                          <table id="brandCoverage_table" class="tile_info">
                           </table>
                         </td>
                       </tr>
@@ -223,7 +193,7 @@
               <div class="col-md-6 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
                   <div class="x_title">
-                    <h2>Brand Coverage</h2>
+                    <h2>Brand vs Competitors</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -249,40 +219,11 @@
                       </tr>
                       <tr>
                         <td>
-                          <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                          <canvas class="" id="brandvscomp" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                         </td>
                         <td>
-                          <table class="tile_info">
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square blue"></i>Parle </p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square green"></i>Nestle </p>
-                              </td>
-                              <td>10%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square purple"></i>Haldiram </p>
-                              </td>
-                              <td>20%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square aero"></i>Britania </p>
-                              </td>
-                              <td>15%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square red"></i>Tiger</p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
+                          <table class="tile_info" id="brandvscomp_table">
+                            
                           </table>
                         </td>
                       </tr>
@@ -294,7 +235,7 @@
               <div class="col-md-6 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
                   <div class="x_title">
-                    <h2>Brand Coverage</h2>
+                    <h2>Item vs Competitors</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -320,40 +261,11 @@
                       </tr>
                       <tr>
                         <td>
-                          <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                          <canvas class="" id="brand3" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                         </td>
                         <td>
-                          <table class="tile_info">
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square blue"></i>Parle </p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square green"></i>Nestle </p>
-                              </td>
-                              <td>10%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square purple"></i>Haldiram </p>
-                              </td>
-                              <td>20%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square aero"></i>Britania </p>
-                              </td>
-                              <td>15%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p><i class="fa fa-square red"></i>Tiger</p>
-                              </td>
-                              <td>30%</td>
-                            </tr>
+                          <table class="tile_info" id="brand3_table">
+                            
                           </table>
                         </td>
                       </tr>
@@ -365,7 +277,7 @@
               <div class="col-md-6 col-xs-12">
                   <div class="x_panel tile  overflow_hidden">
                     <div class="x_title">
-                      <h2>Brand Coverage</h2>
+                      <h2>Affinity Matrix</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -380,52 +292,15 @@
                           <th style="width:37%;">
                             <p>Top 5</p>
                           </th>
-                          <th>
-                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                              <p class="">Brand</p>
-                            </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                              <p class="">Coverage</p>
-                            </div>
-                          </th>
                         </tr>
                         <tr>
                           <td>
-                            <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                            <canvas class="" id="affinity" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                           </td>
                           <td>
-                            <table class="tile_info">
-                              <tr>
-                                <td>
-                                  <p><i class="fa fa-square blue"></i>Parle </p>
-                                </td>
-                                <td>30%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <p><i class="fa fa-square green"></i>Nestle </p>
-                                </td>
-                                <td>10%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <p><i class="fa fa-square purple"></i>Haldiram </p>
-                                </td>
-                                <td>20%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <p><i class="fa fa-square aero"></i>Britania </p>
-                                </td>
-                                <td>15%</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <p><i class="fa fa-square red"></i>Tiger</p>
-                                </td>
-                                <td>30%</td>
-                              </tr>
-                            </table>
+                              <table class="tile_info" id="affinity_table">
+                            
+                                </table>
                           </td>
                         </tr>
                       </table>
@@ -434,7 +309,7 @@
                 </div>
             </div>
           </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
                     <div class="x_title">
                       <h2>Processed Image</h2>
@@ -446,8 +321,9 @@
                       </ul>
                       <div class="clearfix"></div>
                     </div>
-                    <div class="x_content">
-                        <img class="img-responsive" style="height:500px;" src="images/hard_img.jpg">
+                    <div class="x_content save_4_training">
+                        <img class="img-responsive " style="height:500px; margin-left:25px;" src="images/hard_img.jpg">
+                        <button id="training_save" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="position: absolute; bottom: 0; left: 0;width:100%;display:none;">Save for Future</button>
                     </div>
                   </div>
               
@@ -457,6 +333,25 @@
 
           
         </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Data Saved</h4>
+                </div>
+                <div class="modal-body">
+                  <p>This image along with product data has been saved for future training.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                </div>
+              </div>
+          
+            </div>
+          </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -513,11 +408,88 @@
     <script>
       $(document).ready(function(){
         $('.analysis').hide();
+        function mapFunction(value){ return value[0]; }
+        function mapFunction_2(value){ return value[1]; }
+        
+        function returnData(name = "chart1"){
+          request = [
+                        {
+                            'id': 1,
+                            'address_1': 'images/1.jpg',
+                                                    'address_2': 'images/2.jpg',
+                            'description': 'Milk, Cheese, Pizza, Fruit, Tylenol', 
+                            'done': false,
+                            'pie_chart_1' :[['Item',10], ['Apple',20], ['Orange',40],['Banana',10]],
+                            'pie_chart_2' :[['Brand',10], ['Samsung',3], ['Xiaomi',4]],
+                            'pie_chart_3' :[['Brand',10], ['Dell',3], ['HP',7]],
+                            'bounding_box_img' : 'images/3.jpg',
+                            'current_product_affinity' : 90
+                        },
+                        {
+                            'id': 2,
+                            'address_1': 'images/2.jpg',
+                                                    'address_2': 'images/1.jpg',
+                            'description': 'Cold Storage', 
+                            'done': false
+                        }
+                    ];
+          
+          arr = request[0][name];
+          labels = arr.map(mapFunction);
+          vals = arr.map(mapFunction_2);
+          return [labels,vals];
+        }
+
+        function chart_generation(canvas_id, canvas_table_id, data, typeC="doughnut"){
+          color_pallete = ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 206, 86)','rgb(75, 192, 192)','rgb(153, 102, 255)','rgb(255, 159, 64)'];
+
+          var ctx = document.getElementById(canvas_id).getContext("2d");
+          var myChart = new Chart(ctx, {
+              type: typeC,
+              data: {
+                  labels: data[0],
+                  datasets: [{
+                      label: '# of Votes',
+                      data: data[1],
+                      backgroundColor: color_pallete,
+                  }]
+              }, 
+              options:{
+                scales: {
+                  // yAxes: [{
+                  //   barPercentage: 0.20,
+                  //   barThickness:0.15
+                  // }]
+                }
+
+              }
+          });
+          for(i = 0; i < data[0].length; i++){
+            content = '<tr><td><p><i class="fa fa-square" style="color:' + color_pallete[i] + '"></i>' + data[0][i] + '</p></td><td>'+ data[1][i] +'%</td></tr>';
+            $('#'+canvas_table_id).append(content);
+          }
+        }
+        
         $('#submit_form').click(function(){
           $('#top_panel_x').slideUp();
           $("#icon_id").removeClass("fa-chevron-up");
           $("#icon_id").addClass("fa-chevron-down");
           $('.analysis').show();
+          data = returnData("pie_chart_1");
+          chart_generation("brandCoverage", "brandCoverage_table", data);
+          data = returnData("pie_chart_2");
+          chart_generation("brandvscomp", "brandvscomp_table", data);
+          data = returnData("pie_chart_3");
+          chart_generation("brand3", "brand3_table", data);
+          data = returnData("pie_chart_1");
+          chart_generation("affinity", "affinity_table", data);
+        });
+
+        $('.save_4_training').mouseenter(function(){
+          $('#training_save').fadeIn();
+        });
+        $('.save_4_training').mouseleave(function(){
+          $('#training_save').fadeOut();
         });
       })
     </script>
