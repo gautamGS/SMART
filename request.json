@@ -1,21 +1,21 @@
 [
-    {
-        'id': 1,
-        'address_1': u'images/1.jpg',
-                                'address_2': u'images/2.jpg',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False,
-        'pie_chart_1' :[['Item','Competitor'], ['Apple',2], ['Orange',4],['Banana',1]],
-        'pie_chart_2' :[['Brand','Competitor'], ['Samsung',3], ['Xiaomi',4]],
-        'pie_chart_3' :[['Brand','Coverage'], ['Dell',3], ['HP',7]],
-        'bounding_box_img' : u'images/3.jpg',
-        'current_product_affinity' : 90
-    },
-    {
-        'id': 2,
-        'address_1': u'images/2.jpg',
-                                'address_2': u'images/1.jpg',
-        'description': u'Cold Storage', 
-        'done': False
-    }
-]
+                        {
+                            'id': 1,
+                            'address_1': 'images/1.jpg',
+                                                    'address_2': 'images/2.jpg',
+                            'description': 'Milk, Cheese, Pizza, Fruit, Tylenol', 
+                            'done': false,
+                            'pie_chart_1' :[['Item',10], ['Apple',20], ['Orange',40],['Banana',10]],
+                            'pie_chart_2' :[['Brand',10], ['Samsung',3], ['Xiaomi',4]],
+                            'pie_chart_3' :[['Brand',10], ['Dell',3], ['HP',7]],
+                            'bounding_box_img' : 'images/3.jpg',
+                            'current_product_affinity' : 90
+                        },
+                        {
+                            'id': 2,
+                            'address_1': 'images/2.jpg',
+                                                    'address_2': 'images/1.jpg',
+                            'description': 'Cold Storage', 
+                            'done': false
+                        }
+                    ]
