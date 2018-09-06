@@ -68,11 +68,12 @@ def get_gp_bb(rect):
 			return index
 	return -1
 
-#group_bb(gp_coords, prd_coords)
 
-#img = cv2.imread('./ais_repo/ais1.png')
-#img_with_bb = draw_bb(img, gp_coords)
-#disp_img = cv2.resize(img_with_bb, (DISP_WIDTH, DISP_HEIGHT)) 
-#cv2.imshow('image',disp_img)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
+def extract_sub_image(img, bb):
+  extracted_img = img[bb[0][1]:bb[1][1], bb[0][0]:bb[1][0]]
+  #disp_img = cv2.resize(img_with_bb, (DISP_WIDTH, DISP_HEIGHT)) 
+  #cv2.imshow('image',extracted_img)
+  #cv2.waitKey(0)
+  #cv2.destroyAllWindows()
+  return extracted_img
+  

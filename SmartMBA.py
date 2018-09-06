@@ -3,8 +3,9 @@ from SmartAppConfig import *
 
 
 def get_affinity(prd1, prd2):
+  print('affin ', prd1, ' ', prd2)
   affin = 0
-  affinities = AFFINITY_DICT[prd1]
+  affinities = AFFINITY_DICT[prd1[1]]
   for item in affinities:
     if item[0] == prd2:
       affin = item[1]
@@ -13,7 +14,7 @@ def get_affinity(prd1, prd2):
 def get_max_affin(prd):
   result = ()
   affin = 0
-  affinities = AFFINITY_DICT[prd]
+  affinities = AFFINITY_DICT[prd[1]]
   for item in affinities:
     if item[1] > affin:
       affin = item[1]
@@ -31,6 +32,20 @@ def get_prd_affin(prd, avail_prds):
 
 def get_brand_and_prd(brand_prd_tuple):
   return((BRAND_DICT.get(brand_prd_tuple[0]), get_prd_name_from_id(brand_prd_tuple[1])))
+
+def get_brand_from_brandID(id):
+  return BRAND_DICT[id]
+
+def get_brandID_from_brand(brand):
+  for key, val in BRAND_DICT.items():
+    if val == brand:
+      return key
+
+def get_prdID_from_product(prd):
+  for key, val in PRODUCT_DICT.items():
+    for item in val:
+      if item[0] == prd:
+        return item[1]
 
 def get_brand_from_prdID(prdID):
   for key, val in PRODUCT_DICT.items():
@@ -64,7 +79,7 @@ def get_all_prds_and_brands():
 
 def compute_comp_dict(dict, prdID, COMPETITORS):
   comp_brands = []
-  prd_brand = get_brand_from_prdID(prdID)
+  prd_brand = get_brand_from_prdID(prdID[1])
   for competitor_gp in COMPETITORS:
     for brand in competitor_gp:
       if brand == prd_brand:
@@ -73,17 +88,21 @@ def compute_comp_dict(dict, prdID, COMPETITORS):
   comp_dict = {}
   for key, val in dict.items():
     if key[0] in comp_brands:
-      comp_dict[key] = val
+      if key[0] not in comp_dict:
+        comp_dict[key[0]] = val
+      else:
+        comp_dict[key[0]] = comp_dict[key[0]] + val
   return comp_dict
 
 def compute_brand_coverage(dict, prdID):
   brand_covg_dict = {}
-  prd_brand = get_brand_from_prdID(prdID)
+  prd_brand = get_brand_from_prdID(prdID[1])
+  print('prdID ', prdID, ' prd_brand ', prd_brand)
   total_prds_in_brand = len(PRODUCT_DICT[prd_brand])
-  brand_covg_dict['total_products'] = total_prds_in_brand
+  brand_covg_dict['Total Products'] = total_prds_in_brand
   covered_prds = 0
   for key, val in dict.items():
     if key[0] == prd_brand:
       covered_prds = covered_prds + 1
-  brand_covg_dict['current_products'] = covered_prds
+  brand_covg_dict['Current Products'] = covered_prds
   return brand_covg_dict

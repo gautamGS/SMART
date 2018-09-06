@@ -2,6 +2,7 @@ import random
 
 from SmartMatcher import *
 from SmartMBA import *
+from SmartBoxExtractor import *
 from random import randint
 
 
@@ -42,8 +43,41 @@ def extract_promo_bb_coord(ais_img):
 #
 #
 #
-def product_matcher(img_bb_coord):
+def product_matcher(ais_image, img_bb_coord):
   OP_KEY_VAL = 1
+  prd_master_list = get_product_master_list()
+  print('Product Master list')
+  for pm in prd_master_list:
+    print(pm)
+  if (USE_MATCHER_STUB == True):
+    picked_prd = random.choice(prd_master_list)
+    brand_prd = (get_brand_from_prdID(picked_prd[OP_KEY_VAL]), picked_prd[OP_KEY_VAL])
+    return brand_prd
+  else:
+    #Extract desired image
+    prd_dict = {}
+    for img_bb in img_bb_coord:
+      extracted_img = extract_sub_image(ais_image, img_bb)
+      print('Maching ', img_bb)
+      match = match_product(extracted_img, prd_master_list)
+      if (match is not None):
+        prdID = int(match.split('.')[-2].split('/')[-1])
+        print("Match response ", match, ' prdID ', prdID)
+        brand_n_prd =  (get_brand_from_prdID(prdID), prdID)
+        if brand_n_prd not in prd_dict:
+          prd_dict[brand_n_prd] = img_bb
+        else:
+          temp_list = prd_dict[brand_n_prd].append(img_bb)
+          prd_dict[brand_n_prd] = prd_dict[brand_n_prd]
+      else:
+        print("No match happened")
+    return prd_dict
+
+#def find_match_for_image(img_bb_coord, prd_master_list):
+  
+
+
+def get_product_master_list():
   total_prds = get_prd_list()
   filtered_prds = total_prds
   if PRD_ID_NOT_TO_MATCH is not 0:
@@ -51,7 +85,8 @@ def product_matcher(img_bb_coord):
       if prd[1] == PRD_ID_NOT_TO_MATCH:
         filtered_prds.remove(prd)
         break
-  picked_prd = random.choice(filtered_prds)
-  brand_prd = (get_brand_from_prdID(picked_prd[OP_KEY_VAL]), picked_prd[OP_KEY_VAL])
-  return brand_prd
-  
+  print('Filtered product list', filtered_prds)
+  prd_master_list = []
+  for prd in filtered_prds:
+    prd_master_list.append("{}/{}.jpg".format(PRD_MASTER_REPO, prd[1]))
+  return prd_master_list

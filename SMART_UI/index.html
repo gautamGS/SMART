@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>SMART </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -28,6 +28,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <style>.analysis{display:none;}</style>
+
   </head>
 
   <body class="nav-sm">
@@ -42,7 +44,7 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-          
+
             <!-- /menu profile quick info -->
 
             <br />
@@ -82,7 +84,7 @@
           </div>
         </div>
 
-       
+
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -113,24 +115,26 @@
                   <br>
                   <form class="form-horizontal form-label-left input_mask">
                       <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                          <input type="file" class="form-control">
+                          <input id='ais_img' type="file" class="form-control">
                       </div>
 
                       <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                          <select class="select2_group form-control">
-                              <option value="NA">Select Brand</option>
-                                <option value="AK">Parle</option>
-                                <option value="HI">Nestle</option>
-                              
+                          <select id='brand-dropdown' class="select2_group form-control">
+                              <!-- <option value="NA">Select Brand</option>
+                                <option value="PepsiCo">PepsiCo</option>
+                                <option value="Doritos">Doritos</option>
+                                <option value="Frito-Lay">Frito-Lay</option> -->
                             </select>
                       </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
-                        <select class="select2_group form-control">
-                            <option value="NA">Select Item</option>
-                              <option value="AK">Biscuit</option>
-                              <option value="HI">Cookies</option>
-                            
-                          </select>
+                        <select id='prd-dropdown' class="select2_group form-control">
+                            <!-- <option value="NA">Select Item</option>
+                              <option value="LaysCrisp">LaysCrisp</option>
+                              <option value="LaysAmericanStyle">LaysAmericanStyle</option>
+                              <option value="LaysMax">LaysMax</option>
+                              <option value="CheeseDip">CheeseDip</option>
+                              <option value="Kurkure">Kurkure</option> -->
+                        </select> 
                     </div>
 
                     <div class="form-group">
@@ -143,12 +147,56 @@
                   </form>
                 </div>
               </div>
-            
+
             </div>
+          </div>
+          <div class="gif" style="display:none;">
+            <img src="images/wheel.gif" style="margin-left: 500px;margin-top: 163px;">
           </div>
           <div class="row analysis">
             <div class="col-md-8  col-xs-12">
                 <div class="row">
+              <div class="col-md-6 col-xs-12">
+                <div class="x_panel tile  overflow_hidden">
+                  <div class="x_title">
+                    <h2>Product Coverage</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="" style="width:100%">
+                      <tr>
+                        <th style="width:37%;">
+                          <p></p>
+                        </th>
+                        <th>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <p class="">Product</p>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <p class="">Coverage</p>
+                          </div>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <canvas class="" id="productcvg" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                        </td>
+                        <td>
+                          <table class="tile_info" id="productcvg_table">
+
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
               <div class="col-md-6 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
                   <div class="x_title">
@@ -165,7 +213,7 @@
                     <table class="" style="width:100%">
                       <tr>
                         <th style="width:37%;">
-                          <p>Top 5</p>
+                          <p></p>
                         </th>
                         <th>
                           <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
@@ -193,48 +241,6 @@
               <div class="col-md-6 col-xs-12">
                 <div class="x_panel tile  overflow_hidden">
                   <div class="x_title">
-                    <h2>Brand vs Competitors</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <table class="" style="width:100%">
-                      <tr>
-                        <th style="width:37%;">
-                          <p>Top 5</p>
-                        </th>
-                        <th>
-                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                            <p class="">Brand</p>
-                          </div>
-                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                            <p class="">Coverage</p>
-                          </div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <canvas class="" id="brandvscomp" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                        </td>
-                        <td>
-                          <table class="tile_info" id="brandvscomp_table">
-                            
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-xs-12">
-                <div class="x_panel tile  overflow_hidden">
-                  <div class="x_title">
                     <h2>Item vs Competitors</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -248,7 +254,7 @@
                     <table class="" style="width:100%">
                       <tr>
                         <th style="width:37%;">
-                          <p>Top 5</p>
+                          <p></p>
                         </th>
                         <th>
                           <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
@@ -265,7 +271,7 @@
                         </td>
                         <td>
                           <table class="tile_info" id="brand3_table">
-                            
+
                           </table>
                         </td>
                       </tr>
@@ -290,17 +296,13 @@
                       <table class="" style="width:100%">
                         <tr>
                           <th style="width:37%;">
-                            <p>Top 5</p>
+                            <p></p>
                           </th>
                         </tr>
                         <tr>
                           <td>
                             <canvas class="" id="affinity" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                          </td>
-                          <td>
-                              <table class="tile_info" id="affinity_table">
-                            
-                                </table>
+
                           </td>
                         </tr>
                       </table>
@@ -322,20 +324,38 @@
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content save_4_training">
-                        <img class="img-responsive " style="height:500px; margin-left:25px;" src="images/hard_img.jpg">
+                        <img class="img-responsive " style="height:210px; margin-left:25px;" src="images/output.png">
                         <button id="training_save" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="position: absolute; bottom: 0; left: 0;width:100%;display:none;">Save for Future</button>
                     </div>
                   </div>
-              
+
             </div>
+            <div class="col-md-4 col-xs-12">
+              <div class="x_panel tile  overflow_hidden">
+                  <div class="x_title">
+                    <h2>Recommendation</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content ">
+                     <span class="recomm"></span>
+                  </div>
+                </div>
+
+          </div>
           </div>
 
 
-          
+
         </div>
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-          
+
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
@@ -349,7 +369,7 @@
                   <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
                 </div>
               </div>
-          
+
             </div>
           </div>
         <!-- /page content -->
@@ -357,7 +377,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            <!-- Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> -->
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -405,72 +425,18 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script src="./SMART.js"></script>
     <script>
       $(document).ready(function(){
-        $('.analysis').hide();
-        function mapFunction(value){ return value[0]; }
-        function mapFunction_2(value){ return value[1]; }
+        //$('.analysis').hide();
         
-        function returnData(name = "chart1"){
-          request = [
-                        {
-                            'id': 1,
-                            'address_1': 'images/1.jpg',
-                                                    'address_2': 'images/2.jpg',
-                            'description': 'Milk, Cheese, Pizza, Fruit, Tylenol', 
-                            'done': false,
-                            'pie_chart_1' :[['Item',10], ['Apple',20], ['Orange',40],['Banana',10]],
-                            'pie_chart_2' :[['Brand',10], ['Samsung',3], ['Xiaomi',4]],
-                            'pie_chart_3' :[['Brand',10], ['Dell',3], ['HP',7]],
-                            'bounding_box_img' : 'images/3.jpg',
-                            'current_product_affinity' : 90
-                        },
-                        {
-                            'id': 2,
-                            'address_1': 'images/2.jpg',
-                                                    'address_2': 'images/1.jpg',
-                            'description': 'Cold Storage', 
-                            'done': false
-                        }
-                    ];
-          
-          arr = request[0][name];
-          labels = arr.map(mapFunction);
-          vals = arr.map(mapFunction_2);
-          return [labels,vals];
-        }
-
-        function chart_generation(canvas_id, canvas_table_id, data, typeC="doughnut"){
-          color_pallete = ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 206, 86)','rgb(75, 192, 192)','rgb(153, 102, 255)','rgb(255, 159, 64)'];
-
-          var ctx = document.getElementById(canvas_id).getContext("2d");
-          var myChart = new Chart(ctx, {
-              type: typeC,
-              data: {
-                  labels: data[0],
-                  datasets: [{
-                      label: '# of Votes',
-                      data: data[1],
-                      backgroundColor: color_pallete,
-                  }]
-              }, 
-              options:{
-                scales: {
-                  // yAxes: [{
-                  //   barPercentage: 0.20,
-                  //   barThickness:0.15
-                  // }]
-                }
-
-              }
-          });
-          for(i = 0; i < data[0].length; i++){
-            content = '<tr><td><p><i class="fa fa-square" style="color:' + color_pallete[i] + '"></i>' + data[0][i] + '</p></td><td>'+ data[1][i] +'%</td></tr>';
-            $('#'+canvas_table_id).append(content);
-          }
-        }
         
+
+        /*
         $('#submit_form').click(function(){
+
+          setTimeout(function(){
+
           $('#top_panel_x').slideUp();
           $("#icon_id").removeClass("fa-chevron-up");
           $("#icon_id").addClass("fa-chevron-down");
@@ -481,9 +447,10 @@
           chart_generation("brandvscomp", "brandvscomp_table", data);
           data = returnData("pie_chart_3");
           chart_generation("brand3", "brand3_table", data);
-          data = returnData("pie_chart_1");
-          chart_generation("affinity", "affinity_table", data);
-        });
+          data = returnData("pie_chart_4");
+          chart_generation_bar("affinity", "affinity_table", data, 'horizontalBar');
+        }, 1000);});
+        */
 
         $('.save_4_training').mouseenter(function(){
           $('#training_save').fadeIn();

@@ -106,14 +106,15 @@ def orb_compare(img1, img2):
     #cv2.destroyWindow('Matched Features')
     return len(good), img3
 
-def match_product(search_img, ):
-    prd_mstr_lst = ['ShreddedWheat.jpg', 'ABCAlphabits.jpg', 'cornflakes.jpg', 'RaisinBran.jpg']
+def match_product(search_img, prd_mstr_lst):
+    #prd_mstr_lst = ['ShreddedWheat.jpg', 'ABCAlphabits.jpg', 'cornflakes.jpg', 'RaisinBran.jpg']
     best_match_cnt = 0
     best_match_img = ''
-    threshold = 50
+    threshold = 20
     search_img = cv2.resize(cv2.cvtColor(search_img, cv2.COLOR_RGB2GRAY), \
                             (283,490), interpolation =  cv2.INTER_CUBIC)
     for ref_img_nm in prd_mstr_lst:
+        print("Resizing ", ref_img_nm)
         ref_img = img_resize(ref_img_nm)
         good_match_cnt, matched_img = sift_compare(ref_img, search_img)
         if good_match_cnt > best_match_cnt:
@@ -122,6 +123,7 @@ def match_product(search_img, ):
             best_match_img = ref_img_nm
         print("Significance value between ", ref_img_nm, " and search image is ", good_match_cnt )
     if best_match_cnt > threshold:
+        print('Found..................................................', best_match_img)
         return best_match_img
     else:
         return None

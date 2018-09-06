@@ -40,13 +40,29 @@ items = [
 #  Entry level method for SMART analyzer.
 #  It accpets aisle image path and product image path
 #  as input and calls model pipeline to process
-@app.route('/smart/analyze')
+@app.route('/smart/analyze', methods = ['POST'])
 def analyze_aisle_image():
+   print('request.args ', request.form)
+   ais_img=request.form.get('AIS_IMG', default='./ais_repo/ais1.png', type=str)
+   brand=request.form.get('BRAND', type=str)
+   item=request.form.get('ITEM', type=str)
+   req_no=randint(1, 1001) 
+   ais_img = './ais_repo/ais1.png'
+   response_text = process_pipeline(ais_img, brand, item)
+   resp = make_response(json.dumps(response_text))
+   resp.headers['Access-Control-Allow-Origin'] = '*'
+   return resp
+
+
+@app.route('/smart/test', methods = ['GET'])
+def analyze_aisle_image_test():
    ais_img=request.args.get('AIS_IMG', default='./ais_repo/ais1.png', type=str)
    prd_img=request.args.get('PRD_IMG', default='./prd_repo/prd1.png', type=str)
    req_no=randint(1, 1001)
-   
-   return process_pipeline(ais_img, prd_img, req_no) 
+   response_text = process_pipeline(ais_img, prd_img, req_no)
+   resp = make_response(json.dumps(response_text))
+   resp.headers['Access-Control-Allow-Origin'] = '*'
+   return resp
  #
  #
  #
@@ -54,7 +70,7 @@ def analyze_aisle_image():
 @app.route('/smart/products')
 def get_products():
   prds_with_brand = get_all_prds_and_brands()
-  resp = json.dumps(prds_with_brand)
+  resp = make_response(json.dumps(prds_with_brand))
   resp.headers['Access-Control-Allow-Origin'] = '*'
   return resp
 
@@ -78,12 +94,22 @@ def selected_item(id, img_id):
 #
 #
 #
-def process_pipeline(ais_img_path, prd_img_path, req_no):
+def process_pipeline(ais_img_path, brand, item):
     
   #
   #Fetch Images
   ais_img = load_image(ais_img_path)
-  prd_img = load_image(prd_img_path)
+
+  print('brand', brand, ' ; item ', item)
+
+  item_key = get_prdID_from_product(item)
+  brand_key = get_brandID_from_brand(brand)
+
+  print('brand', brand_key, ' ; item ', item_key)
+
+  #Fetch Product
+  PRD_IN_CONSIDERATION = (brand_key, item_key)
+  print('PRD_IN_CONSIDERATION ', PRD_IN_CONSIDERATION)
 
   #Extract product bounding boxes
   prd_bb_coords = extract_prd_bb_coord(ais_img)
@@ -91,16 +117,20 @@ def process_pipeline(ais_img_path, prd_img_path, req_no):
 
   op_image = get_img_with_bb(ais_img_path, prd_bb_coords)
 
-  gp_bb_coords = extract_grp_bb_coord(ais_img)   
+  #
+  # Currently commenting this code. 
+  # We can bring this back once YOLO for group detection
+  # is ready.
+  #gp_bb_coords = extract_grp_bb_coord(ais_img)   
   
   #Extract promo bounding boxes
-  promo_bb_coords = extract_promo_bb_coord(ais_img)
+  #promo_bb_coords = extract_promo_bb_coord(ais_img)
 
   #Group items
-  group_bb(gp_bb_coords, prd_bb_coords)
+  #group_bb(gp_bb_coords, prd_bb_coords)
   
   #Classify each product item
-  prd_dict = classify_prd_items(prd_bb_coords)
+  prd_dict = classify_prd_items(ais_img, prd_bb_coords)
   print_dict(prd_dict,'Classified Products')
   
   #Compute each item type
@@ -113,7 +143,7 @@ def process_pipeline(ais_img_path, prd_img_path, req_no):
   print_dict(comp_cvg_dict, "Competition Cvg")
 
   brand_cvg_dict = compute_brand_coverage(count_dict, PRD_IN_CONSIDERATION)
-  print(brand_cvg_dict)
+  print(brand_cvg_dict, 'Brand Coverage')
 
   #Compute Overall Coverage
   prd_cvg_dict = compute_coverage_all(count_dict)
@@ -133,35 +163,37 @@ def process_pipeline(ais_img_path, prd_img_path, req_no):
   op_dict = {}
   op_dict['prd_cvg_pc'] = format_dict_for_json(prd_cvg_dict)
   op_dict['cmp_cvg_pc'] = format_dict_for_json(comp_cvg_dict)
-  op_dict['brn_cvg_pc'] = brand_cvg_dict
+  op_dict['brn_cvg_pc'] = format_dict_for_json(brand_cvg_dict, False)
   op_dict['afn_cvg_bg'] = format_dict_for_json(affin_dict)
   op_dict['max_aff_bg'] = format_dict_for_json(max_affin_prd)
   op_dict['out_img_bb'] = op_image
 
   #convert op dict to json
   print('Creating op json')
-  op_json = json.dumps(op_dict)  
-  return op_json
+  return op_dict
 #
 #
-def classify_prd_items(dict_prd_bb):
+def classify_prd_items(ais_img, dict_prd_bb):
   prd_dict = {}
-  for item in dict_prd_bb:
-    prd_label = product_matcher(item)
-    if prd_label not in prd_dict:
-      templist = [item]
-      prd_dict[prd_label] = templist       
-    else:
-      temp_list = prd_dict[prd_label].append(item)
-      prd_dict[prd_label] = prd_dict[prd_label]
-  return prd_dict
-    
+  matched_prd_dict = product_matcher(ais_img, dict_prd_bb)   
+  return matched_prd_dict
 
-def format_dict_for_json(dict):
-  op_dict = {}
+def format_dict_for_json(dict, labelize=True):
+  op_dict = []
   for key, val in dict.items():
-    mapped_key=get_brand_and_prd(key)
-    op_dict['{}_{}'.format(mapped_key[0], mapped_key[1])]= val
+    if (labelize):
+      if (isinstance(key, tuple)):
+        mapped_key=get_brand_and_prd(key)
+        op_dict.append(['{}_{}'.format(mapped_key[0], mapped_key[1]), val])
+      else:
+        mapped_key = get_brand_from_brandID(key)
+        op_dict.append([mapped_key, val])
+    else:
+      op_dict.append([key, val])
+      
+    #/op_dict['{}_{}'.format(mapped_key[0], mapped_key[1])]= val
+    
+    
   return  op_dict
 #  Utility Functions
 
